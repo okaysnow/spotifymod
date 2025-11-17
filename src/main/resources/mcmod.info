@@ -1,0 +1,16 @@
+[
+{
+  "modid": "spotifymod",
+  "name": "Spotify Mod",
+  "description": "Control Spotify directly from Minecraft",
+  "version": "1.0",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["snow"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
