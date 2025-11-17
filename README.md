@@ -1,3 +1,13 @@
+![GitHub release](https://img.shields.io/github/v/release/okaysnow/spotifymod)
+![GitHub stars](https://img.shields.io/github/stars/okaysnow/spotifymod?style=social)
+![GitHub forks](https://img.shields.io/github/forks/okaysnow/spotifymod?style=social)
+![GitHub issues](https://img.shields.io/github/issues/okaysnow/spotifymod)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.8.9-brightgreen)
+![Forge](https://img.shields.io/badge/Loader-Forge-orange)
+![License](https://img.shields.io/github/license/okaysnow/spotifymod)
+
+
+
 # Spotify Mod for Minecraft 1.8.9
 
 A Forge mod that integrates Spotify into Minecraft, allowing you to control your music playback directly from the game.
