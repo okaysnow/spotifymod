@@ -46,24 +46,8 @@ The listening party feature works within your Minecraft client session and doesn
 
 ## Setup Instructions
 
-### 1. Create a Spotify Application
-
-1. Go to [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
-2. Log in with your Spotify account
-3. Click "Create an App"
-4. Fill in the app name and description
-5. Add `http://127.0.0.1:8888/callback` to the Redirect URIs
-6. Save your app
-7. Copy your **Client ID** and **Client Secret**
-
 ### 2. Configure the Mod
 
-Open `src/main/java/com/spotifymod/api/SpotifyAPI.java` and replace:
-
-```java
-private static final String CLIENT_ID = "YOUR_CLIENT_ID_HERE";
-private static final String CLIENT_SECRET = "YOUR_CLIENT_SECRET_HERE";
-```
 
 **Important**: Make sure your Spotify app has the following scopes enabled:
 - `user-read-playback-state`
@@ -316,3 +300,7 @@ Created with Minecraft Forge and the Spotify Web API.
 ## License
 
 This mod is for educational purposes. Spotify is a trademark of Spotify AB.
+
+
+***MADE WITH LOVE BY SNOW***
+Contact "aughsnow" on discord for questions. **<3**
