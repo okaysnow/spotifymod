@@ -253,7 +253,14 @@ public class GuiSpotifyControl extends GuiScreen {
             statusMessage = "Opening browser for authentication...";
             authUrl = null; // Clear if browser opened successfully
         } catch (Exception e) {
-            statusMessage = "Browser failed - click button below to copy URL";
+            // Automatically copy URL to clipboard when browser fails
+            try {
+                StringSelection selection = new StringSelection(authUrl);
+                Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
+                statusMessage = "Browser failed - URL copied to clipboard! Paste in browser.";
+            } catch (Exception clipboardEx) {
+                statusMessage = "Browser failed - click button below to copy URL";
+            }
             initGui(); // Refresh to show copy button
             e.printStackTrace();
         }

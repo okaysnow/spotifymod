@@ -1,11 +1,20 @@
 package com.spotifymod.config;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.spotifymod.api.SpotifyCredentials;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.Reader;
+import java.io.Writer;
 
 public class SpotifyConfig {
     private Configuration config;
+    private File configDir;
+    private Gson gson;
     private String accessToken;
     private String refreshToken;
     private long tokenExpiresAt;
@@ -17,6 +26,8 @@ public class SpotifyConfig {
 
     public SpotifyConfig(File configFile) {
         config = new Configuration(configFile);
+        configDir = configFile.getParentFile();
+        gson = new GsonBuilder().setPrettyPrinting().create();
         load();
     }
 
@@ -119,5 +130,36 @@ public class SpotifyConfig {
 
     public void setHudBackground(boolean hudBackground) {
         this.hudBackground = hudBackground;
+    }
+
+    public SpotifyCredentials loadCredentials() {
+        File credentialsFile = new File(configDir, "spotify_credentials.json");
+        
+        // If credentials file doesn't exist, create template
+        if (!credentialsFile.exists()) {
+            SpotifyCredentials template = new SpotifyCredentials("YOUR_CLIENT_ID_HERE", "YOUR_CLIENT_SECRET_HERE");
+            try (Writer writer = new FileWriter(credentialsFile)) {
+                gson.toJson(template, writer);
+                System.err.println("Created spotify_credentials.json template. Please add your Spotify app credentials!");
+                System.err.println("Get credentials from: https://developer.spotify.com/dashboard");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return template;
+        }
+        
+        // Load existing credentials
+        try (Reader reader = new FileReader(credentialsFile)) {
+            SpotifyCredentials credentials = gson.fromJson(reader, SpotifyCredentials.class);
+            if (credentials == null || !credentials.isValid()) {
+                System.err.println("Invalid credentials in spotify_credentials.json!");
+                System.err.println("Please add your Spotify app credentials from: https://developer.spotify.com/dashboard");
+                return new SpotifyCredentials("YOUR_CLIENT_ID_HERE", "YOUR_CLIENT_SECRET_HERE");
+            }
+            return credentials;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new SpotifyCredentials("YOUR_CLIENT_ID_HERE", "YOUR_CLIENT_SECRET_HERE");
+        }
     }
 }

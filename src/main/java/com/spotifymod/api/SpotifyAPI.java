@@ -19,10 +19,10 @@ public class SpotifyAPI {
     private static final String AUTH_URL = "https://accounts.spotify.com/authorize";
     private static final String TOKEN_URL = "https://accounts.spotify.com/api/token";
     
-    // You need to create a Spotify app at https://developer.spotify.com/dashboard
-    // Replace these with your own credentials
-    private static final String CLIENT_ID = "b1c50dbfb0b54ef28b5b6179938d93d2";
-    private static final String CLIENT_SECRET = "cc1c24fbd7a64b34be8de4be6825ab77";
+    // Credentials loaded from spotify_credentials.json
+    // Create your own Spotify app at https://developer.spotify.com/dashboard
+    private final String CLIENT_ID;
+    private final String CLIENT_SECRET;
     private static final String REDIRECT_URI = "http://127.0.0.1:8888/callback";
     
     private final OkHttpClient httpClient;
@@ -35,6 +35,11 @@ public class SpotifyAPI {
         this.config = config;
         this.profileManager = profileManager;
         this.jsonParser = new JsonParser();
+        
+        // Load credentials from config
+        SpotifyCredentials credentials = config.loadCredentials();
+        this.CLIENT_ID = credentials.getClientId();
+        this.CLIENT_SECRET = credentials.getClientSecret();
     }
 
     public boolean isAuthenticated() {

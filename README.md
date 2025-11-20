@@ -56,17 +56,39 @@ The listening party feature works within your Minecraft client session and doesn
 
 ## Setup Instructions
 
-### 2. Configure the Mod
+### 1. Create a Spotify Application
 
+1. Go to [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
+2. Log in with your Spotify account
+3. Click "Create an App"
+4. Fill in the app name and description (e.g., "Minecraft Spotify Mod")
+5. Add `http://127.0.0.1:8888/callback` to the Redirect URIs
+6. Save your app
+7. Copy your **Client ID** and **Client Secret**
 
-**Important**: Make sure your Spotify app has the following scopes enabled:
-- `user-read-playback-state`
-- `user-modify-playback-state`
-- `user-read-currently-playing`
-- `playlist-read-private`
-- `playlist-read-collaborative`
+### 2. Configure Your Credentials
 
-### 3. Build the Mod
+1. In your `.minecraft/config` folder, you'll find a file called `spotify_credentials.json`
+2. If it doesn't exist, launch Minecraft once with the mod installed - it will create a template
+3. Edit the file and replace the placeholders with your actual credentials:
+
+```json
+{
+  "clientId": "YOUR_CLIENT_ID_HERE",
+  "clientSecret": "YOUR_CLIENT_SECRET_HERE"
+}
+```
+
+**Important**: 
+- Keep your credentials private - never share this file!
+- Make sure your Spotify app has the following scopes enabled (they are requested automatically):
+  - `user-read-playback-state`
+  - `user-modify-playback-state`
+  - `user-read-currently-playing`
+  - `playlist-read-private`
+  - `playlist-read-collaborative`
+
+### 3. Build the Mod (Optional - Only if Building from Source)
 
 **Windows:**
 ```powershell
@@ -86,11 +108,13 @@ The compiled mod will be in `build/libs/spotifymod-1.0.jar`
 
 ### 4. Install the Mod
 
-1. Copy the JAR file to your `.minecraft/mods` folder
-2. Launch Minecraft 1.8.9 with Forge installed
-3. Press **P** in-game to open the Spotify GUI
-4. Click "Authenticate with Spotify" and log in
-5. Start controlling your music!
+1. Make sure you have Minecraft 1.8.9 with Forge installed
+2. Copy the JAR file to your `.minecraft/mods` folder
+3. Follow steps 1-2 above to create and configure your Spotify app credentials
+4. Launch Minecraft
+5. Press **P** in-game to open the Spotify GUI
+6. Click "Authenticate with Spotify" and log in
+7. Start controlling your music!
 
 ## Usage
 

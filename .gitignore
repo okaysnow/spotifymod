@@ -28,3 +28,4 @@ logs/
 
 # Config
 config/spotifymod.cfg
+config/spotify_credentials.json
