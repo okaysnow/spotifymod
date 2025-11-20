@@ -10,7 +10,8 @@
 
 # Spotify Mod for Minecraft 1.8.9
 
-A Forge mod that integrates Spotify into Minecraft, allowing you to control your music playback directly from the game.
+A Forge mod that integrates Spotify into Minecraft, allowing you to control your music playback directly from the game. 
+# YOU NEED TO MAKE YOUR OWN SPOTIFY APP AND INSERT THE CLIENT ID AND CLIENT SECRET. PLEASE READ EVERYTHING TO KNOW HOW TO DO THIS. BASIC JAVA KNOWLEDGE IS REQUIRED. IF U WANT A PREMADE .jar THEN ADD "aughsnow" ON DISCORD :3
 
 ## Server Compatibility
 
